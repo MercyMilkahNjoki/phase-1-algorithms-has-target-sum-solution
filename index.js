@@ -1,17 +1,44 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seenNumbers = {};
+  for (const number of array){
+    //n steps
+     const complement = target - number;
+  if (complement in seenNumbers) return true; // 1 step per iteration
+   seenNumbers[number] = true;
+ }
+return false;
+
 }
 
-/* 
-  Write the Big O time complexity of your function here
+
+/* BigO for final soln
+runtime: O(n)
+space: O(n)
+*/
+
+/*prevoius BigO
+  runtime: O(n*n) //nesting ..as input gets bigger, runtime gets worse...by adding every element also makes it inefficient
+  space :O(n) // ..linear growth..no auxiliary data structures .. as the size of the array grows, so does our memory needs, in propotion 
 */
 
 /* 
-  Add your pseudocode here
-*/
+    Add written explanation of your solution here
+  hasTargetSum([1, 2, 3, 4], 6))
+  seenNumbers = {
+    1: true,
+    2: true,
+    3: true
+  }
 
-/*
-  Add written explanation of your solution here
+  create an object to keep track of numbers we've already seen 
+   iterate through each number in the array 
+    for the current num, identify complement that adds to the target(com = target - num)
+     check if any key on our object is a complement
+      if so return true
+       otherwise, add that number to the object
+      
+      if i reach at the end of the array, return false
+ 
 */
 
 // You can run `node index.js` to view these console logs
